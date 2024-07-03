@@ -5,20 +5,22 @@
     size_hint_x: 1
     size_hint_y: None
     height: 200
-    pos_hint: {'top': 1}
     fit_mode: "cover"
 
-
-<shit>:
-    source: 'images/wallpaper.jpg'
-    canvas:
+<TodayDateLabel>:
+    canvas.before:
         Color:
-            rgb: (1, 1, 1)
+            rgba: 0, 0, 0, .8
         Rectangle:
-            texture: self.texture
-            size: self.width + 20, self.height + 20
-            pos: self.x - 10, self.y - 10
-
+            size: self.size
+            pos: self.pos
+    text: "Fianarantsoa 30°C"
+    color: 1, 1, 1, 1
+    font_size: 25
+    pos_hint: {'top': 0.2}
+    size_hint_x: 1
+    size_hint_y: None
+    height: 40
 
 <DateLabel>:
     text: '24/06/2024'
@@ -104,14 +106,26 @@
 
 
 <MainApp>:
-    spacing: 4
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    spacing: 3
     Label:
         text: "Welcome to WeTher"
+        color: 56/255, 81/255, 90/255, 1
         size_hint_x: 1
         size_hint_y: None
         height: 40
         font_size: 30
-    Wallpaper:
+    FloatLayout:
+        size_hint_x: 1
+        size_hint_y: None
+        height: 200
+        Wallpaper:
+        TodayDateLabel:
     ScrollView:
         do_scroll_x: False
         do_scroll_y: True

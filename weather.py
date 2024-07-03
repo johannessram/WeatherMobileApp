@@ -44,6 +44,9 @@ class WeatherIcon(Image):
 class Container(BoxLayout):
     pass
 
+class TodayDateLabel(Label):
+    pass
+
 class WeatherApp(App):
     def build(self):
         self.root = MainApp()

@@ -14,7 +14,6 @@
         Rectangle:
             size: self.size
             pos: self.pos
-    text: "Fianarantsoa 30°C"
     color: 1, 1, 1, 1
     font_size: 25
     pos_hint: {'top': 0.2}
@@ -23,7 +22,7 @@
     height: 40
 
 <DateLabel>:
-    text: '24/06/2024'
+    text: self.parent.date
     font_size: 20
 
     size_hint_x: None
@@ -31,12 +30,10 @@
     height: 50
     
     width: 120
-    # text_size: self.width, None
-    # size_hint: 1, None
-    # height: self.texture_size[1]
+
 
 <MinTempLabel>:
-    text: '20°C'
+    text: self.parent.min_temp
     font_size: 20
     size_hint_x: None
     size_hint_y: None
@@ -44,7 +41,7 @@
     width: 60
 
 <MaxTempLabel>:
-    text: '3°C'
+    text: self.parent.max_temp
     font_size: 20
     size_hint_x: None
     size_hint_y: None
@@ -52,7 +49,7 @@
     width: 60
 
 <HumidityLabel>:
-    text: '20%'
+    text: self.parent.humidity_percentage
     font_size: 20
     size_hint_x: None
     size_hint_y: None
@@ -84,17 +81,11 @@
     height: '50dp'
     DateLabel:
         id: date_label
-        #pos_hint: {'center_x': 0 + (self.width/self.parent.width)*0.5, 'center_y': 0.5}
     WeatherIcon:
-        # pos_hint: {'center_x': 1/4, 'center_y': 0.5}
     MinTempLabel:
-        # pos_hint: {'center_x': 2/4, 'center_y': 0.5}
     MaxTempLabel:
-        # pos_hint: {'center_x': 3/4, 'center_y': 0.5}
     HumidityLabel:
         id: humidity_label
-        # pos_hint: {'center_x': 1 - (self.width/self.parent.width)*0.5, 'center_y': 0.5}
-
 
 <GlobalLayout>:
     orienation: 'vertical'
@@ -102,8 +93,22 @@
     size_hint_y: None
     cols: 1
     spacing: 3
-    # size_hint_y: wallpaper.size[1]
 
+<WelcomeLabel>:
+    text: "Welcome to WeTher"
+    color: 56/255, 81/255, 90/255, 1
+    size_hint_x: 1
+    size_hint_y: None
+    height: 40
+    font_size: 30
+
+<LocationFloatLayout>:
+    size_hint_x: 1
+    size_hint_y: None
+    height: 200
+    Wallpaper:
+    TodayDateLabel:
+        text: self.parent.location + ' ' + self.parent.temperature
 
 <MainApp>:
     canvas.before:
@@ -113,38 +118,28 @@
             pos: self.pos
             size: self.size
     spacing: 3
-    Label:
-        text: "Welcome to WeTher"
-        color: 56/255, 81/255, 90/255, 1
-        size_hint_x: 1
-        size_hint_y: None
-        height: 40
-        font_size: 30
-    FloatLayout:
-        size_hint_x: 1
-        size_hint_y: None
-        height: 200
-        Wallpaper:
-        TodayDateLabel:
-    ScrollView:
-        do_scroll_x: False
-        do_scroll_y: True
-        GlobalLayout:
-            Container:
-            Container:
-            Container:
-            Container:
-            Container:
-            Container:
-            Container:
-            Container:
-            Container:
-            Container:
-            Container:
-            Container:
-            Container:
-            Container:
-            Container:
-            Container:
-            Container:
-            Container:
+
+<ScrollView>:
+    do_scroll_x: False
+    do_scroll_y: True
+
+<Nothing>:
+    GlobalLayout:
+        Container:
+        Container:
+        Container:
+        Container:
+        Container:
+        Container:
+        Container:
+        Container:
+        Container:
+        Container:
+        Container:
+        Container:
+        Container:
+        Container:
+        Container:
+        Container:
+        Container:
+        Container:

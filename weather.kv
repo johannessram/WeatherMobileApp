@@ -57,7 +57,8 @@
     width: 60
 
 <WeatherIcon>:
-    source: 'images/weather_icons_dovora_interactive/PNG/128/angry_clouds.png'
+    # source: 'images/weather_icons_dovora_interactive/PNG/128/angry_clouds.png'
+    source: 'http://openweathermap.org/img/wn/{}.png'.format(self.parent.icon)
     allow_stretch: False
     keep_ration: True
     pos_hint: {'center_y': 0.5}

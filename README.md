@@ -7,9 +7,6 @@ This is a minimalistic weather forecasting mobile application.
 - Kivy 2.3.0
 - requests 2.31.0 (library to be installed in python)
 
-# Icons :
-[Dovora Free Weather Icon Pack](https://www.dovora.com/resources/weather-icons/)
-
 # First thing first - aka setup :
 1. Create a file called `key.py` in the same [root directory](.)
 ```bash

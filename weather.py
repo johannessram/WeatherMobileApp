@@ -42,7 +42,7 @@ class HumidityLabel(Label):
 class GlobalLayout(GridLayout):
     pass
 
-class WeatherIcon(Image):
+class WeatherIcon(AsyncImage):
     pass
 
 class Container(BoxLayout):
@@ -50,13 +50,15 @@ class Container(BoxLayout):
     min_temp = StringProperty()
     max_temp = StringProperty()
     humidity_percentage = StringProperty()
+    icon = StringProperty()
 
-    def __init__(self, date, min_temp, max_temp, humidity_percentage, **kwargs):
+    def __init__(self, date, min_temp, max_temp, humidity_percentage, icon, **kwargs):
         super().__init__(**kwargs)
         self.date = date
         self.min_temp = str(min_temp) + '°C'
         self.max_temp = str(max_temp) + '°C'
         self.humidity_percentage = str(humidity_percentage) + '%'
+        self.icon = icon
 
     pass
 
@@ -78,7 +80,6 @@ class WeatherApp(App):
         scroll_view = ScrollView()
         global_layout = GlobalLayout()
         daily_forecast = scrap.dump_api_response_body()
-        print(daily_forecast)
         today = list(daily_forecast.values())[0]
 
         self.root = MainApp()
@@ -89,11 +90,9 @@ class WeatherApp(App):
                 date=day.date,
                 min_temp=day.min_temp,
                 max_temp=day.max_temp,
-                humidity_percentage=day.humidity_percentage
+                humidity_percentage=day.humidity_percentage,
+                icon=day.icon
             ))
-
-        
-
 
         # [global_layout.add_widget(Container(date='05/07/2024', min_temp='13°c', max_temp='30°c', humidity_percentage='40%')) for _ in range(2)]
         scroll_view.add_widget(global_layout)

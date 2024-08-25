@@ -1,4 +1,5 @@
 # Weather mobile application
+![screenshot](images/screenshot.png)
 
 This is a minimalistic weather forecasting mobile application.
 
